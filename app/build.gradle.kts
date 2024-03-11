@@ -11,8 +11,6 @@ plugins {
     id("org.jetbrains.dokka")
 }
 
-val tmpFilePath = System.getProperty("user.home") + "/work/_temp/keystore/"
-val prereleaseStoreFile: File? = File(tmpFilePath).listFiles()?.first()
 
 fun String.execute() = ByteArrayOutputStream().use { baot ->
     if (project.exec {
@@ -42,12 +40,10 @@ android {
 
     signingConfigs {
         create("prerelease") {
-            if (prereleaseStoreFile != null) {
-                storeFile = file(prereleaseStoreFile)
-                storePassword = System.getenv("SIGNING_STORE_PASSWORD")
-                keyAlias = System.getenv("SIGNING_KEY_ALIAS")
-                keyPassword = System.getenv("SIGNING_KEY_PASSWORD")
-            }
+              storeFile = file('debug.keystore')
+              storePassword = 'android'
+              keyAlias = 'androiddebugkey'
+              keyPassword = 'android'
         }
     }
 
