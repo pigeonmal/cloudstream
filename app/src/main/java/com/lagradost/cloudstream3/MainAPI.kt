@@ -893,7 +893,7 @@ fun TvType.isAnimeOp(): Boolean {
     return this == TvType.Anime || this == TvType.OVA
 }
 
-data class SubtitleFile(val lang: String, val url: String, val offset: Long?)
+data class SubtitleFile(val lang: String, val url: String, val offset: Long? = null)
 
 data class HomePageResponse(
     val items: List<HomePageList>,
