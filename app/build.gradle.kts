@@ -40,10 +40,10 @@ android {
 
     signingConfigs {
         create("prerelease") {
-              storeFile = file('debug.keystore')
-              storePassword = 'android'
-              keyAlias = 'androiddebugkey'
-              keyPassword = 'android'
+              storeFile = file("debug.keystore")
+              storePassword = "android"
+              keyAlias = "androiddebugkey"
+              keyPassword = "android"
         }
     }
 
