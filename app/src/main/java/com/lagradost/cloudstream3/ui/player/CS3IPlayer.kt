@@ -396,7 +396,7 @@ class CS3IPlayer : IPlayer {
     override fun setPreferredSubtitles(subtitle: SubtitleData?): Boolean {
         Log.i(TAG, "setPreferredSubtitles init $subtitle")
         currentSubtitles = subtitle
-
+        
         fun getTextTrack(id: String) =
             exoPlayer?.currentTracks?.groups?.filter { it.type == TRACK_TYPE_TEXT }
                 ?.getTrack(id)
@@ -409,6 +409,9 @@ class CS3IPlayer : IPlayer {
                         .clearOverridesOfType(TRACK_TYPE_TEXT)
                 )
             } else {
+               if (subtitle.offset != null) {
+                    currentSubtitleOffset = subtitle.offset
+                }
                 when (subtitleHelper.subtitleStatus(subtitle)) {
                     SubtitleStatus.REQUIRES_RELOAD -> {
                         Log.i(TAG, "setPreferredSubtitles REQUIRES_RELOAD")
