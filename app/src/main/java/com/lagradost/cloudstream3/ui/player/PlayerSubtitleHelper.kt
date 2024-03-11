@@ -39,7 +39,7 @@ data class SubtitleData(
     val mimeType: String,
     val headers: Map<String, String>,
     val languageCode: String?,
-    val offset: Long?
+    val offset:  Long? = null
 ) {
     /** Internal ID for exoplayer, unique for each link*/
     fun getId(): String {
