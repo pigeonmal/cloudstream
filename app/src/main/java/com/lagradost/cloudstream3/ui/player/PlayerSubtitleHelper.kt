@@ -38,7 +38,8 @@ data class SubtitleData(
     val origin: SubtitleOrigin,
     val mimeType: String,
     val headers: Map<String, String>,
-    val languageCode: String?
+    val languageCode: String?,
+    val offset: Long?
 ) {
     /** Internal ID for exoplayer, unique for each link*/
     fun getId(): String {
@@ -83,7 +84,8 @@ class PlayerSubtitleHelper {
                 origin = SubtitleOrigin.URL,
                 mimeType = subtitleFile.url.toSubtitleMimeType(),
                 headers = emptyMap(),
-                languageCode = subtitleFile.lang
+                languageCode = subtitleFile.lang,
+                offset = subtitleFile.offset
             )
         }
     }
